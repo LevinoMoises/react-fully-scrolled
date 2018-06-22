@@ -1,4 +1,6 @@
-# React Fully Scrolled
+# CUSTOM VERSION OF REACT FULLY SCROLLED
+
+## Go to react-fully-scrolled for the original
 
 [![NPM version][npm-image]][npm-url]
 
@@ -20,7 +22,7 @@ Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
 
 `npm install react-fully-scrolled`  
 
-For mobile compatibility, make sure to disable touchmove events, like so: 
+For mobile compatibility, make sure to disable touchmove events, like so:
 ```js
 document.ontouchmove = function(ev) {
   ev.preventDefault();
