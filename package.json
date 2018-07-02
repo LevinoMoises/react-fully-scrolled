@@ -1,6 +1,6 @@
 {
   "name": "custom-react-fully-scrolled",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "This is a custom version of react-fully-scrolled! Don't use it",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
