@@ -79,6 +79,7 @@ class Scroller extends Component {
     this.addTouchEvents();
     window.addEventListener('resize', this.resize, false);
     document.addEventListener('resize', this.resize, false);
+    document.addEventListener('keydown', this.onKeyDown);
 
     window.fpTurnTo = document.fpTurnTo = this.turnTo.bind(this);
   }
@@ -89,6 +90,7 @@ class Scroller extends Component {
     this.removeTouchEvents()
     window.removeEventListener('resize', this.resize, false);
     document.removeEventListener('resize', this.resize, false);
+    document.removeEventListener('keydown', this.onKeyDown);
 
     delete window.fpTurnTo
     delete document.fpTurnTo
@@ -251,6 +253,23 @@ class Scroller extends Component {
 
     if (animate) this.setIsAnimating(true);
     this.setStyles({ transform: translateyStr })
+  }
+
+  onKeyDown = (e) => {
+    const { key } = e;
+
+    const movePage = this.props.swipeSensitivity + 1;
+
+    switch (key) {
+        case 'ArrowUp':
+          this.handleSwipeEnd(movePage);
+          break;
+        case 'ArrowDown':
+          this.handleSwipeEnd(- movePage);
+          break;
+        default:
+          return;
+    }
   }
 
   addTouchEvents() {
