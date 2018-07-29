@@ -82,6 +82,8 @@ class Scroller extends Component {
     document.addEventListener('keydown', this.onKeyDown);
 
     window.fpTurnTo = document.fpTurnTo = this.turnTo.bind(this);
+
+    this.prevTime = new Date().getTime();
   }
 
   componentWillUnmount() {
@@ -134,26 +136,19 @@ class Scroller extends Component {
   }
 
   onWheel = (event) => {
-    if (!this.props.isEnabled || this.isAnimating) {
-      return
-    }
+    if (!this.props.isEnabled) return
 
-    let delta = 0;
+    const curTime = new Date().getTime()
+    const timeDiff = curTime - this.prevTime
 
-    if (event.wheelDelta) {
-      delta = event.wheelDelta / 120;
-      if (window.opera) {
-        delta = -delta;
-      }
-    } else if (event.detail) {
-      delta = -event.detail / 3;
-    } else if (event.deltaY) {
-      delta = -event.deltaY / 3
-    }
+    this.prevTime = curTime
 
-    if (delta) {
-      this.handle(delta);
-    }
+    if (this.isAnimating || timeDiff < 40) return
+
+    const value = event.wheelDelta || -event.deltaY || -event.detail
+    const delta = Math.max(-1, Math.min(1, value))
+
+    if (delta) this.handle(delta)
   }
 
   removeWheelEvent() {
