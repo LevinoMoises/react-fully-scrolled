@@ -1,6 +1,15 @@
 # CUSTOM VERSION OF REACT FULLY SCROLLED
 
-## Go to react-fully-scrolled for the original
+## Go to react-fully-scrolled by @giladaya for the original
+  This version contains two improvements from its original:
+
+  • _touchSensitivity_ prop;
+
+    This prop determines how much Y movement is required before the page starts to move. The default value is 50.
+
+  • Macbook touchpad bug fix;
+
+    This version has a hotfix for multiple swipes on Macbook touchpads.
 
 [![NPM version][npm-image]][npm-url]
 
